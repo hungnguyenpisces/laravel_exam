@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EXAM</title>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/dataTables.bootstrap5.min.css">
 
 </head>
 
@@ -58,26 +59,42 @@
     <hr>
 
     <section>
-        <h3>Create</h3>
+        <h3>Library</h3>
+        <table id="exam" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>AuthorID</th>
+                    <th>Book Title</th>
+                    <th>ISBN</th>
+                    <th>Pub Year</th>
+                    <th>Available</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- $books -->
+                @foreach ($books as $book)
+                <tr>
+                    <td>{{ $book->authorid }}</td>
+                    <td>{{ $book->title }}</td>
+                    <td>{{ $book->ISBN }}</td>
+                    <td>{{ $book->pub_year }}</td>
+                    <td>{{ $book->available }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </section>
 
-    <section>
-        <h3>Read</h3>
-    </section>
-
-    <section>
-        <h3>Update</h3>
-    </section>
-
-    <section>
-        <h3>Delete</h3>
-    </section>
-
-    <section>
-        <!-- Modal create -->
-
-    </section>
     <script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/bootstrap/js/jquery-3.5.1.js"></script>
+    <script src="/assets/bootstrap/js/jquery.dataTables.min.js"></script>
+    <script src="/assets/bootstrap/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#exam').DataTable();
+        });
+    </script>
 </body>
 
 </html>
